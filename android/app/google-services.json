@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1092880751011",
+    "project_id": "my-private-notes-svb",
+    "storage_bucket": "my-private-notes-svb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1092880751011:android:f57a8b16ee51683273a216",
+        "android_client_info": {
+          "package_name": "me.svbogdan.myprivatenotes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1092880751011-pu7taks6i9u4vjt7pbg82eejhr1fbsrv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKAMUrihFYgUP3J-ut1DtVKPcsb0ekgnE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1092880751011-pu7taks6i9u4vjt7pbg82eejhr1fbsrv.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1092880751011-p1oiisp23ibvpj9ndcs900t372bikq7o.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "me.svbogdan.myprivatenotes"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
