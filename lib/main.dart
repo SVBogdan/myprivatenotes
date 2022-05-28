@@ -3,8 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:myprivatenotes/firebase_options.dart';
-
-
+import 'package:myprivatenotes/views/login_view.dart';
+import 'package:myprivatenotes/views/register_view.dart';
+import 'package:myprivatenotes/views/verify_emai_view.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,6 +16,10 @@ void main() {
         primarySwatch: Colors.purple
       ),
       home: const HomePage(),
+      routes: {
+        '/login/':(context) => const LoginView(),
+        '/register/': (context) => const RegisterView()
+      },
     ));
 }
 
@@ -23,12 +28,7 @@ class HomePage extends StatelessWidget {
 
     @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home'),
-        ),
-
-      body: FutureBuilder(
+    return FutureBuilder(
         future:Firebase.initializeApp(
                  options: DefaultFirebaseOptions.currentPlatform,
                   ),
@@ -37,20 +37,24 @@ class HomePage extends StatelessWidget {
            
             case ConnectionState.done:
               final user = FirebaseAuth.instance.currentUser;
-              if (user?.emailVerified ?? false){
-                print('You area verified user');
-              }else {
-                print('You need to verify your email');
+              if (user != null){
+                if (user.emailVerified){
+                  print('Email is verified');
+                } else{
+                  return const VerifyEmailView();
+                }
+              }else { 
+                return const LoginView();
               }
               return const Text('Done');
-              default:
-              return const Text('Loading...');
+            default:
+              return const CircularProgressIndicator();
           }
           
           
         },
          
-      ),
       );
   }
 }
+
