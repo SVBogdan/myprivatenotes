@@ -1,9 +1,8 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'dart:developer' as devtools show log;
-
 import 'package:myprivatenotes/constants/routes.dart';
+import 'package:myprivatenotes/utilities/show_error_dialog.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({Key? key}) : super(key: key);
@@ -44,7 +43,7 @@ class _RegisterViewState extends State<RegisterView> {
                 controller: _email,
                  decoration: 
                 const InputDecoration(
-                  hintText: 'Please enter your email'
+                  hintText: 'Please register your email'
                 ),
                 enableSuggestions: false,
                 keyboardType: TextInputType.emailAddress,
@@ -57,29 +56,43 @@ class _RegisterViewState extends State<RegisterView> {
                 autocorrect: false,
                 decoration: 
                 const InputDecoration(
-                  hintText: 'Please enter your password'
+                  hintText: 'Please register your password'
                 ),
               ),
               TextButton(
                 onPressed: () async {
-                  
                   final email = _email.text;
                   final password = _password.text;
                   try{
-                      final userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                    await FirebaseAuth.instance.createUserWithEmailAndPassword(
                     email: email, 
                     password: password,
                     );
-                    devtools.log(userCredential.toString());
+                    final user = FirebaseAuth.instance.currentUser;
+                    await user?.sendEmailVerification();
+                    Navigator.of(context).pushNamed(verifyEmailRoute);
                   } on FirebaseAuthException catch(e){
                       if(e.code == 'weak-password'){
-                        devtools.log('Weak Password');
+                        await showErrorDialog(
+                          context, 
+                          'Password is to weak',);
                       } else if(e.code =='email-already-in-use'){
-                        devtools.log('This email is already used');
+                        await showErrorDialog(context,
+                         'This email is already used',);
                       } else if(e.code == 'invalid-email'){
-                        devtools.log('Invalid Email');
+                        await showErrorDialog(context,
+                        'Invalid email',
+                        );
+                      }else {
+                        await showErrorDialog(context,
+                         'Error ${e.code}',
+                         );
                       }
                       
+                  } catch(e) {
+                    await showErrorDialog(context,
+                     e.toString(),
+                     );
                   }
                   
                 },
