@@ -6,6 +6,7 @@ import 'package:myprivatenotes/servicies/auth/bloc/auth_bloc.dart';
 import 'package:myprivatenotes/servicies/auth/bloc/auth_event.dart';
 import 'package:myprivatenotes/servicies/auth/bloc/auth_state.dart';
 import 'package:myprivatenotes/servicies/auth/firebase_auth_provider.dart';
+import 'package:myprivatenotes/views/forgot_password_view.dart';
 import 'package:myprivatenotes/views/login_view.dart';
 import 'package:myprivatenotes/views/notes/create_update_note_view.dart';
 import 'package:myprivatenotes/views/register_view.dart';
@@ -49,6 +50,8 @@ class HomePage extends StatelessWidget {
         return const VerifyEmailView();
       } else if (state is AuthStateLoggedOut) {
         return const LoginView();
+      } else if (state is AuthStateForgotPassword) {
+        return const ForgotPasswordView();
       } else if (state is AuthStateRegistering) {
         return const RegisterView();
       } else {
@@ -57,27 +60,5 @@ class HomePage extends StatelessWidget {
         );
       }
     });
-
-    // return FutureBuilder(
-    //   future: AuthService.firebase().intialize(),
-    //   builder: (context, snapshot) {
-    //     switch (snapshot.connectionState) {
-    //       case ConnectionState.done:
-    //         final user = AuthService.firebase().currentUser;
-    //         if (user != null) {
-    //           if (user.isEmailVerified) {
-    //             return const NotesView();
-    //           } else {
-    //             return const VerifyEmailView();
-    //           }
-    //         } else {
-    //           return const LoginView();
-    //         }
-
-    //       default:
-    //         return const CircularProgressIndicator();
-    //     }
-    //   },
-    // );
   }
 }

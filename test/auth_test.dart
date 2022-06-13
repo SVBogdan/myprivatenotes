@@ -1,6 +1,3 @@
-import 'dart:math';
-
-import 'package:flutter/material.dart';
 import 'package:myprivatenotes/servicies/auth/auth_exceptions.dart';
 import 'package:myprivatenotes/servicies/auth/auth_provider.dart';
 import 'package:myprivatenotes/servicies/auth/auth_user.dart';
@@ -138,6 +135,11 @@ class MockAuthProvider implements AuthProvider {
       email: 'foo@bar.com',
     );
     _user = newUser;
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> sendPasswordReset({required String toEmail}) {
     throw UnimplementedError();
   }
 }
