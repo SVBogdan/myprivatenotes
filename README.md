@@ -5,4 +5,4 @@ I made this app with the help of [Vandad Nahavandipoor's Free Flutter Course](ht
 ## Why I made this app
 This project is a starting point for a person who wants to learn Flutter.
 
-It helped me learn about : Dart, Developer accounts, Widgets, How Flutter works, Git and GitHub, Firebase backend, Auth Service, CRUD Local Storage, Working with data streams, CRUD cloud Firestore, Bloc, Localization
+It helped me learn about : Dart, Developer accounts, Widgets, How Flutter works, Git and GitHub, Firebase backend, Auth Service, CRUD Local Storage, Working with data streams, CRUD cloud Firestore, Bloc, Localization and many others.
