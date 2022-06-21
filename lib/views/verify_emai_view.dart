@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:myprivatenotes/constants/routes.dart';
-import 'package:myprivatenotes/servicies/auth/auth_service.dart';
+import 'package:myprivatenotes/extension/buildcontext/loc.dart';
 import 'package:myprivatenotes/servicies/auth/bloc/auth_bloc.dart';
 import 'package:myprivatenotes/servicies/auth/bloc/auth_event.dart';
 
@@ -9,35 +8,48 @@ class VerifyEmailView extends StatefulWidget {
   const VerifyEmailView({Key? key}) : super(key: key);
 
   @override
-  State<VerifyEmailView> createState() => _VerifyEmailViewState();
+  _VerifyEmailViewState createState() => _VerifyEmailViewState();
 }
 
 class _VerifyEmailViewState extends State<VerifyEmailView> {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Scaffold(
-        appBar: AppBar(title: const Text('Verify email')),
-        body: Column(children: [
-          const Text(
-              "We've sent you a verification email.Please open it to verify your account"),
-          const Text(
-              "If you haven't recieved a verification email please press the button below"),
-          TextButton(
-              onPressed: () async {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(context.loc.verify_email),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                context.loc.verify_email_view_prompt,
+                textScaleFactor: 1.3,
+              ),
+            ),
+            TextButton(
+              onPressed: () {
                 context.read<AuthBloc>().add(
                       const AuthEventSendEmailVerification(),
                     );
               },
-              child: const Text('Send email verification')),
-          TextButton(
+              child: Text(
+                context.loc.verify_email_send_email_verification,
+              ),
+            ),
+            TextButton(
               onPressed: () async {
                 context.read<AuthBloc>().add(
                       const AuthEventLogOut(),
                     );
               },
-              child: const Text('Restart'))
-        ]),
+              child: Text(
+                context.loc.restart,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

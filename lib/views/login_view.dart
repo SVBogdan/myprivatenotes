@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:myprivatenotes/extension/buildcontext/loc.dart';
 import 'package:myprivatenotes/servicies/auth/auth_exceptions.dart';
 import 'package:myprivatenotes/servicies/auth/bloc/auth_bloc.dart';
 import 'package:myprivatenotes/servicies/auth/bloc/auth_event.dart';
@@ -38,23 +39,33 @@ class _LoginViewState extends State<LoginView> {
         if (state is AuthStateLoggedOut) {
           if (state.exception is UserNotFoundAuthException) {
             await showErrorDialog(
-                context, 'Cannot find a user with the entered credentials');
+              context,
+              context.loc.login_error_cannot_find_user,
+            );
           } else if (state.exception is WrongPasswordAuthException) {
-            await showErrorDialog(context, 'Wrong credentials');
+            await showErrorDialog(
+              context,
+              context.loc.login_error_wrong_credentials,
+            );
           } else if (state.exception is GenericAuthException) {
-            await showErrorDialog(context, 'Authentification Error');
+            await showErrorDialog(
+              context,
+              context.loc.login_error_auth_error,
+            );
           }
         }
       },
       child: Scaffold(
-        appBar: AppBar(title: const Text('Login')),
+        appBar: AppBar(
+          title: Text(context.loc.login),
+        ),
         body: Padding(
           padding: const EdgeInsets.all(32.0),
           child: SingleChildScrollView(
             child: Column(
               children: [
-                const Text(
-                  'Please login into your account in order to interact with your notes',
+                Text(
+                  context.loc.login_view_prompt,
                   textScaleFactor: 1.3,
                 ),
                 const SizedBox(
@@ -63,8 +74,9 @@ class _LoginViewState extends State<LoginView> {
                 ),
                 TextField(
                   controller: _email,
-                  decoration: const InputDecoration(
-                      hintText: 'Please enter your email'),
+                  decoration: InputDecoration(
+                    hintText: context.loc.email_text_field_placeholder,
+                  ),
                   enableSuggestions: false,
                   keyboardType: TextInputType.emailAddress,
                   autocorrect: false,
@@ -74,8 +86,9 @@ class _LoginViewState extends State<LoginView> {
                   obscureText: true,
                   enableSuggestions: false,
                   autocorrect: false,
-                  decoration: const InputDecoration(
-                      hintText: 'Please enter your password'),
+                  decoration: InputDecoration(
+                    hintText: context.loc.password_text_field_placeholder,
+                  ),
                 ),
                 TextButton(
                     onPressed: () async {
@@ -88,14 +101,16 @@ class _LoginViewState extends State<LoginView> {
                             ),
                           );
                     },
-                    child: const Text('Login')),
+                    child: Text(context.loc.login)),
                 TextButton(
                   onPressed: () {
                     context.read<AuthBloc>().add(
                           const AuthEventShouldRegister(),
                         );
                   },
-                  child: const Text('Not registered? Register here!'),
+                  child: Text(
+                    context.loc.login_view_not_registered_yet,
+                  ),
                 ),
                 TextButton(
                   onPressed: () {
@@ -103,7 +118,9 @@ class _LoginViewState extends State<LoginView> {
                           const AuthEventForgotPassword(),
                         );
                   },
-                  child: const Text('Forgot Password?'),
+                  child: Text(
+                    context.loc.login_view_forgot_password,
+                  ),
                 ),
               ],
             ),

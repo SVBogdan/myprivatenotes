@@ -1,0 +1,62 @@
+{
+    "my_title":"My title goes here(RO)",
+
+    "logout_button": "Delogare",
+    "note": "Notita",
+    "cancel": "Anulare",
+    "yes": "Da",
+    "delete": "Stergere",
+    "sharing": "Partajare",
+    "ok": "OK",
+    "login": "Logare",
+    "verify_email": "Verificare email",
+    "register": "Inregistrare",
+    "restart": "Restart",
+
+    "start_typing_your_note": "Aici introducem notita",
+    "delete_note_prompt": "Doriti sa stergeti aceasta notita?",
+    "cannot_share_empty_note_prompt": "Nu se poate partaja o notita goala!",
+    "generic_error_prompt": "A aparut o eroare",
+    "logout_dialog_prompt": "Doriti sa va delogati?",
+
+    "password_reset": "Resetare parola",
+    "password_reset_dialog_prompt": "V-am trimis un link ce va va ajuta sa va resetati parola. Va rugam sa va verificati mailul.",
+
+    "login_error_cannot_find_user": "Nu am gasit un utilizator cu aceste date!",
+    "login_error_wrong_credentials": "Datele introduse sunt gresite",
+    "login_error_auth_error": "Eroare de autentifiare",
+
+    "login_view_prompt": "Va rugam sa va logati pentru a putea crea si interactiona cu notitele !",
+    
+    "login_view_forgot_password": "Mi-am uitat parola",
+    "login_view_not_registered_yet": "Nu aveti un cont? Inregistrati-va aici!",
+
+    "email_text_field_placeholder": "Introduceti adresa de email",
+    "password_text_field_placeholder": "Introduceti parola dumneavoastra",
+    
+    "forgot_password": "Parola uitata",
+    "forgot_password_view_generic_error": "Nu am putut procesa cererea. Va rugam sa va asigurati ca aveti un user inregistrat.",
+    "forgot_password_view_prompt": "Daca ati uitat parola ,va rugam introduceti adresa de email si veti primi un linke pentru reseterea parolei.",
+    "forgot_password_view_send_me_link": "Trimite-mi un link de resetarea parolei",
+    "forgot_password_view_back_to_login": "Inapoi la pagina de logare",
+
+    "register_error_weak_password": "Aceasta parola nu este destul de puternica. Va rugma alegeti alta parola!",
+    "register_error_email_already_in_use": "Acest email este deja inregistrat. Va rugam alegeti alt email!",
+    "register_error_generic": "Eroare la Inregistrare. Va rugam incercati mai tarziu!",
+    "register_error_invalid_email": "Adresa de email introdusa nu este valida. Va rugam incercati alta adresa email!",
+    "register_view_prompt": "Introduceti emailul si parola pentru a avea acces la notite!",
+    "register_view_already_registered": "Aveti cont? Logati-va aici!",
+
+    "verify_email_view_prompt": "V-am trimis un email de verificare. Va rugam sa il deschideti pentru a va verifica contul. Daca nu ati primit un asemnea email va rugam apasati butonul de sub acest text!",
+    "verify_email_send_email_verification": "Trimite verificare prin email",
+
+    "notes_title": "{count, plural, =0{Inca nu exista notite} =1{1 notita} other{{count} notite}}",
+    "@notes_title": {
+        "placeholders": {
+            "count": {
+                "type": "int",
+                "example": "3 notes"
+            }
+        }
+    }
+}
